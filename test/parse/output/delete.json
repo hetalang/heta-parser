@@ -1,0 +1,47 @@
+[
+  {
+    "id": "something",
+    "action": "delete"
+  },
+  {
+    "id": "s1",
+    "action": "delete",
+    "space": "one"
+  },
+  {
+    "id": "x1",
+    "action": "delete",
+    "class": "Two"
+  },
+  {
+    "id": "x2",
+    "action": "delete",
+    "class": "Two"
+  },
+  {
+    "id": "x3",
+    "action": "delete",
+    "class": "Two"
+  },
+  {
+    "id": "x1",
+    "action": "upsert",
+    "space": "one",
+    "class": "Species",
+    "compartment": "comp1"
+  },
+  {
+    "id": "x2",
+    "action": "insert",
+    "space": "one",
+    "class": "Species",
+    "compartment": "comp1"
+  },
+  {
+    "id": "x1",
+    "action": "update",
+    "space": "one",
+    "class": "Species",
+    "compartment": "comp1"
+  }
+]

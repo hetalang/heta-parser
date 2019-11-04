@@ -1,0 +1,13 @@
+[
+  {
+    "action": "upsert",
+    "id": "scn1",
+    "class": "Model",
+    "scope": "one",
+    "type": "kinetic",
+    "method": {
+      "timeStep": 2,
+      "solver": "lsoda"
+    }
+  }
+]

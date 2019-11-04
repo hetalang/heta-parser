@@ -1,0 +1,11 @@
+block @species {space: two} begin
+  s1 {compartment: comp1};
+  s2 {compartment: comp2};
+  s3 {compartment: comp3};
+  s1 []= 0.3;
+  s2 := s1/2;
+end
+
+#import ext3::x { source: simple.heta };
+
+#import ext3::y { source: "./allTypeValues.heta" };

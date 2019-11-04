@@ -1,0 +1,14 @@
+scn1 {
+  class: Model,
+  scope: one,
+  type: kinetic,
+  method: {timeRange: [0,120], timeStep: 1e-3, solver: lsoda}
+};
+
+one::A {assignments: {
+    evt1: {expr: A+5}
+}};
+
+one::B {assignments: {
+    evt1: {expr: 0}
+}};

@@ -1,0 +1,9 @@
+namespace two begin
+  s1 @Species {compartment: comp1};
+  s2 @Species {compartment: comp2}; // comment2
+  s3 @Species {compartment: comp3}; /* comment 3*/
+
+  s1 []= 0.3;  
+  s2 := s1/2;  
+
+ end

@@ -1,0 +1,11 @@
+one::scn1 @model{
+  type: kinetic
+};
+
+A@species {compartment: comp1};
+
+one::scn2@model{
+  type: kinetic
+};
+
+one::A @species {compartment: comp1};

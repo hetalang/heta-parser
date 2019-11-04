@@ -1,0 +1,11 @@
+block {space: two} begin
+  block @species begin
+    block {aux: hello} begin
+      s1 {compartment: comp1};
+      s2 {compartment: comp2};
+      s1 []= 0.3;
+    end
+    s2 := s1/2;
+    s3 {compartment: comp3, aux: hello};
+  end
+end

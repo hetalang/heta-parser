@@ -1,0 +1,49 @@
+[
+  {
+    "id": "s1",
+    "action": "upsert",
+    "space": "two",
+    "compartment": "comp1",
+    "class": "Species"
+  },
+  {
+    "id": "s2",
+    "action": "upsert",
+    "space": "two",
+    "compartment": "comp2",
+    "class": "Species"
+  },
+  {
+    "id": "s3",
+    "action": "upsert",
+    "space": "two",
+    "compartment": "comp3",
+    "class": "Species"
+  },
+  {
+    "id": "s1",
+    "action": "upsert",
+    "space": "two",
+    "class": "Species",
+    "assignments": {"start_": {"expr": 0.3}}
+  },
+  {
+    "id": "s2",
+    "action": "upsert",
+    "space": "two",
+    "class": "Species",
+    "assignments": {"ode_": {"expr": "s1/2"}}
+  },
+  {
+    "id": "x",
+    "action": "import",
+    "space": "ext3",
+    "source": "simple.heta"
+  },
+  {
+    "id": "y",
+    "action": "import",
+    "space": "ext3",
+    "source": "./allTypeValues.heta"
+  }
+]

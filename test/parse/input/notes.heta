@@ -1,0 +1,13 @@
+block @species begin
+  '''Short text'''
+  S1 {compartment: comp1};
+  S2 {compartment: comp2};
+end
+
+'''
+This is very long text. This is very long text\'s.
+This is very long text. This is very long text.
+This is very long text. This is very long text. This is very long text. This is very long text.
+This is very long text.
+'''
+S4 @species {compartment: comp1};

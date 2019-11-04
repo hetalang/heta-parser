@@ -1,0 +1,21 @@
+[
+  {
+    "action": "upsert",
+    "id": "scn1",
+    "class": "Model",
+    "space": "one",
+    "type": "kinetic"
+  },
+  {
+    "action": "upsert",
+    "id": "evt1",
+    "space": "one",
+    "class": "Event"
+  },
+  {
+    "action": "upsert",
+    "id": "A",
+    "class": "Species",
+    "compartment": "comp1"
+  }
+]

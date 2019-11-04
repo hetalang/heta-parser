@@ -1,0 +1,6 @@
+one::A []= 10;
+one::B []= 1e-3;
+one::C []= 0;
+
+one::r1 := comp1*k1*A;
+one::r2 := comp1*k2*B;

@@ -1,0 +1,59 @@
+[
+    {
+        "action": "upsert",
+        "class": "Compartment",
+        "assignments": {
+            "start_": {
+                "expr": 1
+            }
+        },
+        "id": "Default",
+        "space": "human"
+    },
+    {
+        "action": "upsert",
+        "class": "Compartment",
+        "assignments": {
+            "start_": {
+                "expr": 1
+            }
+        },
+        "id": "BRAIN",
+        "space": "human"
+    },
+    {
+        "action": "upsert",
+        "class": "Species",
+        "compartment": "BRAIN",
+        "id": "A_b",
+        "space": "human"
+    },
+    {
+        "action": "upsert",
+        "class": "Species",
+        "compartment": "BRAIN",
+        "id": "O_b",
+        "space": "human"
+    },
+    {
+        "action": "upsert",
+        "class": "Species",
+        "compartment": "BRAIN",
+        "id": "P_b",
+        "space": "human"
+    },
+    {
+        "action": "upsert",
+        "class": "Species",
+        "compartment": "BRAIN",
+        "id": "L_b",
+        "space": "human"
+    },
+    {
+        "action": "upsert",
+        "class": "Species",
+        "compartment": "BRAIN",
+        "id": "S_b",
+        "space": "human"
+    }
+]

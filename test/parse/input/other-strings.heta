@@ -1,0 +1,21 @@
+/*
+  Testing strings and expression strings
+*/
+
+description @Page { content: "
+    # title 1
+
+    first block
+
+    second block
+" };
+
+one::x1 @Record := 1*y;
+one::x2 @Record := "1*y";
+one::x3 @Record := "1 
+  + 2 
+  + 3";
+
+one::x4 @Record := 1 
+  + 2 
+  + 3;

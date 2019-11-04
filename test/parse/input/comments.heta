@@ -1,0 +1,25 @@
+
+// submodel 1 without structures
+
+scn1 {
+  class: Model,
+  scope: one,
+  type: kinetic,
+  method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
+};
+
+/*
+scn1 {
+  class: model,
+  scope: one,
+  type: kinetic,
+  method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
+};
+*/
+
+scn2 {
+  class: Model,
+  scope: one,
+  type: kinetic,
+  method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
+};

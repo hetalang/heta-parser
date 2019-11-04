@@ -1,0 +1,9 @@
+scn1 {
+  class: Model,
+  space: one,
+  type: kinetic
+};
+
+one::evt1 @event;
+
+A {class: Species, compartment: comp1};

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "S1",
+    "action": "upsert",
+    "compartment": "comp1",
+    "notes": "Short text",
+    "class": "Species"
+  },
+  {
+    "id": "S2",
+    "action": "upsert",
+    "compartment": "comp2",
+    "class": "Species"
+  },
+  {
+    "id": "S4",
+    "action": "upsert",
+    "class": "Species",
+    "compartment": "comp1",
+    "notes": "\nThis is very long text. This is very long text's.\nThis is very long text. This is very long text.\nThis is very long text. This is very long text. This is very long text. This is very long text.\nThis is very long text.\n"
+  }
+]

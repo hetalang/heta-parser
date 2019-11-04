@@ -1,0 +1,6 @@
+node_modules/
+draft/
+test/draft.js
+.nyc_output
+/coverage
+*.log

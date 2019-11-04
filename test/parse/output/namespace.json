@@ -1,0 +1,39 @@
+[
+  {
+    "action": "upsert",
+    "id": "s1",
+    "compartment": "comp1",
+    "space": "two",
+    "class": "Species"
+  },
+  {
+    "action": "upsert",
+    "id": "s2",
+    "compartment": "comp2",
+    "space": "two",
+    "class": "Species"
+  },
+  {
+    "action": "upsert",
+    "id": "s3",
+    "compartment": "comp3",
+    "space": "two",
+    "class": "Species"
+  },
+  {
+    "action": "upsert",
+    "id": "s1",
+    "assignments": {
+      "start_": {"expr": 0.3}
+    },
+    "space": "two"
+  },
+  {
+    "action": "upsert",
+    "id": "s2",
+    "assignments": {
+      "ode_": {"expr": "s1/2"}
+    },
+    "space": "two"
+  }
+]

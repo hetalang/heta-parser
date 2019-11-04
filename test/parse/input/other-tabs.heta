@@ -1,0 +1,12 @@
+namespace human begin
+  // compartments
+  Default @Compartment .= 1.0;
+  BRAIN @Compartment .= 1.0;
+
+  // species
+		A_b @Species { compartment: BRAIN };
+  O_b @Species { compartment: BRAIN };	
+  P_b	@Species { compartment: BRAIN };	
+  L_b	@Species { compartment: BRAIN };	
+  S_b	@Species { compartment: BRAIN };
+end

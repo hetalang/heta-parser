@@ -1,0 +1,42 @@
+[
+  {
+    "action": "upsert",
+    "id": "A",
+    "space": "one",
+    "assignments": {
+      "start_": {"expr": 10}
+    }
+  },
+  {
+    "action": "upsert",
+    "id": "B",
+    "space": "one",
+    "assignments": {
+      "start_": {"expr": 1e-3}
+    }
+  },
+  {
+    "action": "upsert",
+    "id": "C",
+    "space": "one",
+    "assignments": {
+      "start_": {"expr": 0}
+    }
+  },
+  {
+    "action": "upsert",
+    "id": "r1",
+    "space": "one",
+    "assignments": {
+      "ode_": {"expr": "comp1*k1*A"}
+    }
+  },
+  {
+    "action": "upsert",
+    "id": "r2",
+    "space": "one",
+    "assignments": {
+      "ode_": {"expr": "comp1*k2*B"}
+    }
+  }
+]

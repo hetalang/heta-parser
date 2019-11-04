@@ -1,0 +1,32 @@
+[
+  {
+    "action": "upsert",
+    "id": "scn1",
+    "class": "Model",
+    "scope": "one",
+    "type": "kinetic",
+    "method": {
+      "timeRange": [
+        0,
+        120
+      ],
+      "timeStep": 2,
+      "solver": "lsoda"
+    }
+  },
+  {
+    "action": "upsert",
+    "id": "scn2",
+    "class": "Model",
+    "scope": "one",
+    "type": "kinetic",
+    "method": {
+      "timeRange": [
+        0,
+        120
+      ],
+      "timeStep": 2,
+      "solver": "lsoda"
+    }
+  }
+]
