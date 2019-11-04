@@ -1,3 +1,9 @@
+
+[![Travis](https://travis-ci.org/insysbio/heta-parser.svg?branch=master)](https://travis-ci.org/insysbio/heta-parser)
+[![Coverage Status](https://coveralls.io/repos/github/insysbio/heta-parser/badge.svg?branch=master)](https://coveralls.io/github/insysbio/heta-parser?branch=master)
+[![GitHub release](https://img.shields.io/github/release/insysbio/heta-parser.svg)](https://github.com/insysbio/heta-parser/releases/)
+[![GitHub license](https://img.shields.io/github/license/insysbio/heta-parser.svg)](https://github.com/insysbio/heta-parser/blob/master/LICENSE)
+
 # Heta parser
 
 Parsing of heta-language files.
