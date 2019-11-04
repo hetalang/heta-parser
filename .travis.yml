@@ -14,3 +14,12 @@ branches:
   - master
   - dev
   - /^v\d+\.\d+\.\d+.*$/
+
+jobs:
+  include:
+    - stage: "Coverall"
+      node_js: 10
+      os: linux
+      script:
+        - npm run test:cov
+      after_success: skip
