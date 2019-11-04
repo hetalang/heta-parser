@@ -1,3 +1,5 @@
+// parser generator: https://pegjs.org/
+
 {
   const _ = require('lodash');
 }

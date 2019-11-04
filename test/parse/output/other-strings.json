@@ -3,7 +3,7 @@
     "action": "upsert",
     "id": "description",
     "class": "Page",
-    "content": "\r\n    # title 1\r\n\r\n    first block\r\n\r\n    second block\r\n"
+    "content": "\n    # title 1\n\n    first block\n\n    second block\n"
   },
   {
     "action": "upsert",
