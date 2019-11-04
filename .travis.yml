@@ -20,6 +20,9 @@ jobs:
     - stage: "Coverall"
       node_js: 10
       os: linux
+      branches:
+        only:
+        - master
       script:
         - npm run test:cov
       after_success: skip
