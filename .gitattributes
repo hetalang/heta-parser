@@ -1,0 +1,2 @@
+# to have all heta files in linux style line endings
+*.sln heta eol=lf
