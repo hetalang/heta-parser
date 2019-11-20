@@ -1,0 +1,34 @@
+[
+  {
+    "id": "s1",
+    "action": "upsert",
+    "compartment": "comp1",
+    "class": "Species"
+  },
+  {
+    "id": "s2",
+    "action": "upsert",
+    "compartment": "comp2",
+    "class": "Species"
+  },
+  {
+    "id": "s3",
+    "action": "upsert",
+    "compartment": "comp3",
+    "class": "Species"
+  },
+  {
+    "action": "include",
+    "source": "simple.heta"
+  },
+  {
+    "action": "include",
+    "source": "./allTypeValues.heta",
+    "type": "heta"
+  },
+  {
+    "action": "include",
+    "source": "./variables.heta",
+    "type": "heta"
+  }
+]

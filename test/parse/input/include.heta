@@ -1,0 +1,8 @@
+
+s1 @Species {compartment: comp1};
+s2 @Species {compartment: comp2};
+s3 @Species {compartment: comp3};
+
+include simple.heta
+include ./allTypeValues.heta oftype heta
+include "./variables.heta" oftype heta

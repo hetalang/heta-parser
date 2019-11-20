@@ -11,6 +11,7 @@ const cases = [
   { source: './input/namespace.heta', target: './output/namespace.json' },
   { source: './input/delete.heta', target: './output/delete.json' },
   { source: './input/import.heta', target: './output/import.json' },
+  { source: './input/include.heta', target: './output/include.json' },
   { source: './input/nested.heta', target: './output/nested.json' },
   { source: './input/nestedBlocks.heta', target: './output/nestedBlocks.json' },
   { source: './input/notes.heta', target: './output/notes.json' },

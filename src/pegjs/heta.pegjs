@@ -4,7 +4,7 @@
   const _ = require('lodash');
 }
 
-start = result: (MultylineComment/LineComment/Block/BaseStruct/NamespaceBlock)+ (Break/Space)*
+start = result: (MultylineComment/LineComment/Block/Include/BaseStruct/NamespaceBlock)+ (Break/Space)*
   {
     return _
       .chain(result)
@@ -118,6 +118,25 @@ Assignment "Assignment" = sign: SignAssignment Space* exprString: (String)
   }
 
 // -- BLOCKS --
+
+Include "Include" = (Break/Space)* "include" Space+ source: FilePath oftype:(Space+ "oftype" (Space)+ "\""? [a-zA-Z0-9]+ "\""?)? Space* Break?
+  {
+    let type = oftype ? 
+       oftype[4].join('') :
+       undefined;
+    let res = {
+      action: "include",
+      source: source
+    };
+    if(type) res.type = type;
+
+    return res;
+  }
+
+FilePath = "\""? s:([a-zA-Z0-9.\-/]+) "\""?
+  {
+    return s.join('');
+  }
 
 Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Assignment)+ "begin" result: (MultylineComment/LineComment/Block/BaseStruct)+ (Break/Space)* "end" 
   {
