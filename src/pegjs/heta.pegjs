@@ -119,16 +119,20 @@ Assignment "Assignment" = sign: SignAssignment Space* exprString: (String)
 
 // -- BLOCKS --
 
-Include "Include" = (Break/Space)* "include" Space+ source: FilePath oftype:(Space+ "oftype" (Space)+ "\""? [a-zA-Z0-9]+ "\""?)? Space* Break?
+Include "Include" = (Break/Space)* "include" Space+ source: FilePath oftype:(Space+ "type" Space+ "\""? [a-zA-Z0-9]+ "\""?)? ofwith:(Space+ "with" Space+ Dict)? Space* Break?
   {
-    let type = oftype ? 
-       oftype[4].join('') :
-       undefined;
     let res = {
       action: "include",
       source: source
     };
+    let type = oftype 
+      ? oftype[4].join('')
+      : undefined;
     if(type) res.type = type;
+    let with_ = ofwith
+      ? ofwith[3]
+      : undefined;
+    if(with_) Object.assign(res, with_);
 
     return res;
   }
