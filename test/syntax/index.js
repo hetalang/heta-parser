@@ -187,7 +187,7 @@ let to_test = [
   },
   {
     source: 'block @Class1 {title: title1 } begin y @Class2 { title: title1, compartment: comp1 }; end',
-    expectation: [{id: 'y', action: 'upsert', class: 'Class1', title: 'title1', compartment: 'comp1'}]
+    expectation: [{id: 'y', action: 'upsert', class: 'Class2', title: 'title1', compartment: 'comp1'}]
   },
   {
     source: '\'\'\'this is the notes\'\'\'\na;',

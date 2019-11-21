@@ -6,4 +6,5 @@ namespace two begin
   s1 []= 0.3;  
   s2 := s1/2;  
 
+  one::k1 @Const = 1;
  end

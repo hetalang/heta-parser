@@ -146,6 +146,7 @@ function peg$parse(input, options) {
             .chain(result)
             .flatten()
             .compact()
+            .forEach((x) => _.defaults(x, {action: 'upsert'}))
             .value();
         },
       peg$c1 = peg$otherExpectation("Comment"),
@@ -165,7 +166,7 @@ function peg$parse(input, options) {
             return null;
           },
       peg$c13 = function(fullLine) {
-          let res = Object.assign({action: 'upsert'}, ...fullLine);
+          let res = Object.assign({}, ...fullLine);
           return res;
         },
       peg$c14 = peg$otherExpectation("Index"),
@@ -307,14 +308,14 @@ function peg$parse(input, options) {
             .flatten()
             .compact()
             .value()
-            .map((x) => Object.assign(x, blockObj))
+            .map((x) => Object.assign({}, blockObj, x))
         },
       peg$c79 = function(space, result) {
           return  _.chain(result)
             .flatten()
             .compact()
             .value()
-            .map((x) => Object.assign(x, {space}))
+            .map((x) => Object.assign({}, {space: space}, x))
         },
       peg$c80 = /^[A-Za-z_]/,
       peg$c81 = peg$classExpectation([["A", "Z"], ["a", "z"], "_"], false, false),

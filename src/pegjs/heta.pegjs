@@ -10,6 +10,7 @@ start = result: (MultylineComment/LineComment/Block/Include/BaseStruct/Namespace
       .chain(result)
       .flatten()
       .compact()
+      .forEach((x) => _.defaults(x, {action: 'upsert'}))
       .value();
   }
 
@@ -35,7 +36,7 @@ MultylineComment
 
 BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignment)+ EndSign
   {
-    let res = Object.assign({action: 'upsert'}, ...fullLine);
+    let res = Object.assign({}, ...fullLine);
     return res;
   }
 
@@ -149,7 +150,7 @@ Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Ass
       .flatten()
       .compact()
       .value()
-      .map((x) => Object.assign(x, blockObj))
+      .map((x) => Object.assign({}, blockObj, x))
   }
 
 // -- NamespaceBlock block --
@@ -159,7 +160,7 @@ NamespaceBlock = (Break/Space)* "namespace" (Break/Space)+ space: KeyName (Break
       .flatten()
       .compact()
       .value()
-      .map((x) => Object.assign(x, {space}))
+      .map((x) => Object.assign({}, {space: space}, x))
   }
 
 // --- Lexis ---
