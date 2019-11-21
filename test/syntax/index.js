@@ -221,6 +221,21 @@ let to_test = [
   {
     source: 'p1 @Const = 1 {units: UL};',
     expectation: [{action: 'upsert', class: 'Const', id: 'p1', num: 1, units: 'UL'}]
+  },
+  {
+    description: 'no space',
+    source: 'k1 @Const = 3.3;',
+    expectation: [{action: 'upsert', class: 'Const', id: 'k1', num: 3.3}]
+  },
+  {
+    description: 'no id',
+    source: 'one::* @Const = 3.3;',
+    expectation: [{action: 'upsert', class: 'Const', space: 'one', num: 3.3}]
+  },
+  {
+    description: 'no id no space',
+    source: '* @Const = 3.3;',
+    expectation: [{action: 'upsert', class: 'Const', num: 3.3}]
   }
 ];
 

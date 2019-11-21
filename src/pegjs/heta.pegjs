@@ -41,13 +41,21 @@ BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignm
   }
 
 
-Index "Index" = !("block"/"namespace"/"begin"/"end") space: KeyName "::" id: KeyName
+Index "Index" = !("block"/"namespace"/"begin"/"end") space: KeyName "::" id: (KeyName/"*")
   {
-    return { id, space };
+    if(id==='*'){
+      return { space };
+    }else{
+      return { id, space };
+    }
   }
-Id "Id" = !("block"/"namespace"/"begin"/"end") id: KeyName !(Space* "::")
+Id "Id" = !("block"/"namespace"/"begin"/"end") id: (KeyName/"*") !(Space* "::")
   {
-    return { id };
+    if(id==='*'){
+      return {};
+    }else{
+      return { id };
+    }
   }
 
 // search string in format #command
