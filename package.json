@@ -1,6 +1,6 @@
 {
   "name": "heta-parser",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Parsing of Heta-language files.",
   "main": "src/index.js",
   "bin": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "npm run generate && mocha test --recursive",
-    "test:dev": "npm run generate && mocha ./test/error",
+    "test:dev": "npm run generate && mocha ./test/parse",
     "test:cov": "nyc --reporter=text-lcov npm run test | coveralls",
     "test:bin": "npm run generate && node bin/heta.js run test/parse/input/include.heta",
     "generate": "pegjs -o src/index.js src/pegjs/heta.pegjs"

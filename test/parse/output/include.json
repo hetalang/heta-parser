@@ -32,5 +32,10 @@
     "type": "heta",
     "a": "aaa",
     "b": 1
+  },
+  {
+    "action": "include",
+    "source": "simple.heta",
+    "space": "one"
   }
 ]

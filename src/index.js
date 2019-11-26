@@ -2233,7 +2233,10 @@ function peg$parse(input, options) {
                 if (s8 === peg$FAILED) {
                   s8 = peg$parseLineComment();
                   if (s8 === peg$FAILED) {
-                    s8 = peg$parseBaseStruct();
+                    s8 = peg$parseInclude();
+                    if (s8 === peg$FAILED) {
+                      s8 = peg$parseBaseStruct();
+                    }
                   }
                 }
                 if (s8 !== peg$FAILED) {
@@ -2243,7 +2246,10 @@ function peg$parse(input, options) {
                     if (s8 === peg$FAILED) {
                       s8 = peg$parseLineComment();
                       if (s8 === peg$FAILED) {
-                        s8 = peg$parseBaseStruct();
+                        s8 = peg$parseInclude();
+                        if (s8 === peg$FAILED) {
+                          s8 = peg$parseBaseStruct();
+                        }
                       }
                     }
                   }

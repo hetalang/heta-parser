@@ -162,7 +162,7 @@ Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Ass
   }
 
 // -- NamespaceBlock block --
-NamespaceBlock = (Break/Space)* "namespace" (Break/Space)+ space: KeyName (Break/Space)+ "begin" result: (MultylineComment/LineComment/BaseStruct)+ (Break/Space)* "end" (Break/Space)*
+NamespaceBlock = (Break/Space)* "namespace" (Break/Space)+ space: KeyName (Break/Space)+ "begin" result: (MultylineComment/LineComment/Include/BaseStruct)+ (Break/Space)* "end" (Break/Space)*
   {
     return  _.chain(result)
       .flatten()

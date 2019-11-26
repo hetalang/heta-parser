@@ -6,3 +6,7 @@ s3 @Species {compartment: comp3};
 include simple.heta
 include ./allTypeValues.heta type heta
 include "./variables.heta" type heta with {a: aaa, b: 1}
+
+namespace one begin
+    include simple.heta
+end
