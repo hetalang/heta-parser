@@ -10,7 +10,7 @@ const cases = [
   { source: './input/block.heta', target: './output/block.json' },
   { source: './input/namespace.heta', target: './output/namespace.json' },
   { source: './input/delete.heta', target: './output/delete.json' },
-  { source: './input/import.heta', target: './output/import.json' },
+  { source: './input/include0.heta', target: './output/include0.json' },
   { source: './input/include.heta', target: './output/include.json' },
   { source: './input/nested.heta', target: './output/nested.json' },
   { source: './input/nestedBlocks.heta', target: './output/nestedBlocks.json' },

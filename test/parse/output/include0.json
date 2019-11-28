@@ -36,13 +36,13 @@
   },
   {
     "id": "x",
-    "action": "import",
+    "action": "include",
     "space": "ext3",
     "source": "simple.heta"
   },
   {
     "id": "y",
-    "action": "import",
+    "action": "include",
     "space": "ext3",
     "source": "./allTypeValues.heta"
   }

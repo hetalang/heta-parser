@@ -198,8 +198,8 @@ let to_test = [
     expectation: [{id: 'k1', action: 'upsert', class: 'Record', title: 'title three words'}]
   },
   {
-    source: 'namespace one begin\n  #import {source: 1.heta, type: heta};\nend',
-    expectation: [{action: 'import', space: 'one', source: '1.heta', type: 'heta'}]
+    source: 'namespace one begin\n  #include {source: 1.heta, type: heta};\nend',
+    expectation: [{action: 'include', space: 'one', source: '1.heta', type: 'heta'}]
   },
   // @Const
   {
