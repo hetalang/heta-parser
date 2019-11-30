@@ -162,13 +162,24 @@ Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Ass
   }
 
 // -- NamespaceBlock block --
-NamespaceBlock = (Break/Space)* "namespace" (Break/Space)+ space: KeyName (Break/Space)+ "begin" result: (MultylineComment/LineComment/Include/BaseStruct)+ (Break/Space)* "end" (Break/Space)*
+NamespaceBlock = (Break/Space)* type: ("abstract"/"concrete")? (Break/Space)* "namespace" (Break/Space)+ space: KeyName? block: BeginEnd?
   {
-    return  _.chain(result)
-      .flatten()
-      .compact()
-      .value()
-      .map((x) => Object.assign({}, {space: space}, x))
+    let qArr = !block
+      ? []
+      : block.map((x) => Object.assign({}, {space: space}, x));
+
+    return qArr;
+  }
+
+BeginEnd = (Break/Space)+
+  "begin" (Break/Space)+
+  internal: (MultylineComment/LineComment/Include/BaseStruct)* (Break/Space)* 
+  "end" (Break/Space)*
+  {
+    return _.chain(internal)
+        .flatten()
+        .compact()
+        .value();
   }
 
 // --- Lexis ---

@@ -1,10 +1,22 @@
 namespace two begin
   s1 @Species {compartment: comp1};
   s2 @Species {compartment: comp2}; // comment2
-  s3 @Species {compartment: comp3}; /* comment 3*/
+  s3 @Species {compartment: comp3}; // comment 3
 
   s1 []= 0.3;  
   s2 := s1/2;  
 
   one::k1 @Const = 1;
- end
+end
+
+abstract namespace xxx begin
+end
+
+concrete namespace xxx begin
+end
+
+namespace xxx
+
+abstract namespace xxx
+
+abstract namespace
