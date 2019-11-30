@@ -163,9 +163,18 @@ Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Ass
 // -- NamespaceBlock block --
 NamespaceBlock = (Break/Space)* type: ("abstract"/"concrete")? (Break/Space)* "namespace" (Break/Space)+ space: KeyName? Space? block: BeginEnd?
   {
-    let qArr = !block
-      ? []
-      : block.map((x) => Object.assign({}, {space: space}, x));
+    let q0 = { action: "setNS" };
+    if(space) q0.space = space;
+    if(type) q0.type = type;
+    let qArr = [q0];
+    
+    if(block){
+      block.map((x) => {
+        let q = Object.assign({}, {space: space}, x);
+        qArr.push(q);
+      });
+    }
+
     return qArr;
   }
 

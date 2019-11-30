@@ -34,6 +34,10 @@
     "b": 1
   },
   {
+    "action": "setNS",
+    "space": "one"
+  },
+  {
     "action": "include",
     "source": "simple.heta",
     "space": "one"

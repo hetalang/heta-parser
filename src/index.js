@@ -324,9 +324,18 @@ function peg$parse(input, options) {
       peg$c83 = "concrete",
       peg$c84 = peg$literalExpectation("concrete", false),
       peg$c85 = function(type, space, block) {
-          let qArr = !block
-            ? []
-            : block.map((x) => Object.assign({}, {space: space}, x));
+          let q0 = { action: "setNS" };
+          if(space) q0.space = space;
+          if(type) q0.type = type;
+          let qArr = [q0];
+          
+          if(block){
+            block.map((x) => {
+              let q = Object.assign({}, {space: space}, x);
+              qArr.push(q);
+            });
+          }
+
           return qArr;
         },
       peg$c86 = function(internal) {

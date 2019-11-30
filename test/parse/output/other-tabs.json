@@ -1,5 +1,9 @@
 [
     {
+        "action": "setNS",
+        "space": "human"
+    },
+    {
         "action": "upsert",
         "class": "Compartment",
         "assignments": {

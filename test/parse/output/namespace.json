@@ -1,5 +1,9 @@
 [
   {
+    "action": "setNS",
+    "space": "two"
+  },
+  {
     "action": "upsert",
     "id": "s1",
     "compartment": "comp1",
@@ -42,5 +46,29 @@
     "id": "k1",
     "num": 1,
     "space": "one"
+  },
+
+  {
+    "action": "setNS",
+    "type": "abstract",
+    "space": "xxx"
+  },
+  {
+    "action": "setNS",
+    "type": "concrete",
+    "space": "xxx"
+  },
+  {
+    "action": "setNS",
+    "space": "xxx"
+  },
+  {
+    "action": "setNS",
+    "type": "abstract",
+    "space": "xxx"
+  },
+  {
+    "action": "setNS",
+    "type": "abstract"
   }
 ]
