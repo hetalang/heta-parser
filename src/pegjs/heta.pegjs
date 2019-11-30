@@ -151,29 +151,27 @@ FilePath = "\""? s:([a-zA-Z0-9.\-/]+) "\""?
     return s.join('');
   }
 
-Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Assignment)+ "begin" result: (MultylineComment/LineComment/Block/BaseStruct)+ (Break/Space)* "end" 
+Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Assignment)+ block: BeginEnd
   {
     let blockObj = Object.assign({}, ...fullLine);
-    return  _.chain(result)
-      .flatten()
-      .compact()
-      .value()
-      .map((x) => Object.assign({}, blockObj, x))
+    let qArr = !block
+      ? []
+      : block.map((x) => Object.assign({}, blockObj, x));
+    return qArr;
   }
 
 // -- NamespaceBlock block --
-NamespaceBlock = (Break/Space)* type: ("abstract"/"concrete")? (Break/Space)* "namespace" (Break/Space)+ space: KeyName? block: BeginEnd?
+NamespaceBlock = (Break/Space)* type: ("abstract"/"concrete")? (Break/Space)* "namespace" (Break/Space)+ space: KeyName? Space? block: BeginEnd?
   {
     let qArr = !block
       ? []
       : block.map((x) => Object.assign({}, {space: space}, x));
-
     return qArr;
   }
 
-BeginEnd = (Break/Space)+
+BeginEnd = (Break/Space)*
   "begin" (Break/Space)+
-  internal: (MultylineComment/LineComment/Include/BaseStruct)* (Break/Space)* 
+  internal: (MultylineComment/LineComment/Include/BaseStruct/Block)* (Break/Space)* 
   "end" (Break/Space)*
   {
     return _.chain(internal)
