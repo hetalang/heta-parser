@@ -241,6 +241,11 @@ let to_test = [
     description: 'no num',
     source: 'k1 @Const \'title\';',
     expectation: [{action: 'upsert', class: 'Const', id: 'k1', title: 'title'}]
+  },
+  {
+    description: 'empty statements',
+    source: ';;;',
+    expectation: []
   }
 ];
 

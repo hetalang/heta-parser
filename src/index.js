@@ -146,6 +146,7 @@ function peg$parse(input, options) {
             .chain(result)
             .flatten()
             .compact()
+            .filter((x) => Object.keys(x).length > 0)
             .forEach((x) => _.defaults(x, {action: 'upsert'}))
             .value();
         },
@@ -886,29 +887,27 @@ function peg$parse(input, options) {
         }
       }
     }
-    if (s2 !== peg$FAILED) {
-      while (s2 !== peg$FAILED) {
-        s1.push(s2);
-        s2 = peg$parseSpace();
+    while (s2 !== peg$FAILED) {
+      s1.push(s2);
+      s2 = peg$parseSpace();
+      if (s2 === peg$FAILED) {
+        s2 = peg$parseBreak();
         if (s2 === peg$FAILED) {
-          s2 = peg$parseBreak();
+          s2 = peg$parseNote();
           if (s2 === peg$FAILED) {
-            s2 = peg$parseNote();
+            s2 = peg$parseId();
             if (s2 === peg$FAILED) {
-              s2 = peg$parseId();
+              s2 = peg$parseIndex();
               if (s2 === peg$FAILED) {
-                s2 = peg$parseIndex();
+                s2 = peg$parseAction();
                 if (s2 === peg$FAILED) {
-                  s2 = peg$parseAction();
+                  s2 = peg$parseType();
                   if (s2 === peg$FAILED) {
-                    s2 = peg$parseType();
+                    s2 = peg$parseTitle();
                     if (s2 === peg$FAILED) {
-                      s2 = peg$parseTitle();
+                      s2 = peg$parseDict();
                       if (s2 === peg$FAILED) {
-                        s2 = peg$parseDict();
-                        if (s2 === peg$FAILED) {
-                          s2 = peg$parseAssignment();
-                        }
+                        s2 = peg$parseAssignment();
                       }
                     }
                   }
@@ -918,8 +917,6 @@ function peg$parse(input, options) {
           }
         }
       }
-    } else {
-      s1 = peg$FAILED;
     }
     if (s1 !== peg$FAILED) {
       s2 = peg$parseEndSign();

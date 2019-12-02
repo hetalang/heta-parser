@@ -10,6 +10,7 @@ start = result: (MultylineComment/LineComment/Block/Include/BaseStruct/Namespace
       .chain(result)
       .flatten()
       .compact()
+      .filter((x) => Object.keys(x).length > 0)
       .forEach((x) => _.defaults(x, {action: 'upsert'}))
       .value();
   }
@@ -34,12 +35,11 @@ MultylineComment
       return null;
     }
 
-BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignment)+ EndSign
+BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignment)* EndSign
   {
     let res = Object.assign({}, ...fullLine);
     return res;
   }
-
 
 Index "Index" = !("block"/"namespace"/"begin"/"end") space: KeyName "::" id: (KeyName/"*")
   {
