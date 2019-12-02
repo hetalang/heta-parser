@@ -199,7 +199,7 @@ let to_test = [
   },
   {
     source: 'namespace one begin\n  #include {source: 1.heta, type: heta};\nend',
-    expectation: [{action: 'include', space: 'one', source: '1.heta', type: 'heta'}]
+    expectation: [{action: 'setNS', space: 'one'}, {action: 'include', space: 'one', source: '1.heta', type: 'heta'}]
   },
   // @Const
   {
@@ -236,6 +236,11 @@ let to_test = [
     description: 'no id no space',
     source: '* @Const = 3.3;',
     expectation: [{action: 'upsert', class: 'Const', num: 3.3}]
+  },
+  {
+    description: 'no num',
+    source: 'k1 @Const \'title\';',
+    expectation: [{action: 'upsert', class: 'Const', id: 'k1', title: 'title'}]
   }
 ];
 
