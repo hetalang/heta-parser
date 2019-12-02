@@ -243,7 +243,7 @@ SignAssignment = ("="/":="/".="/"`="/("[" KeyName? "]="))
 signClass = [@];
 signTitle = ['];
 
-Space "Space" = [ \t]
+Space "Space" = [ \t\u202F\u00A0\u2000\u2001\u2003]
   {
     return null;
   }

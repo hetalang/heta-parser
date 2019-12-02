@@ -400,8 +400,8 @@ function peg$parse(input, options) {
       peg$c116 = /^[']/,
       peg$c117 = peg$classExpectation(["'"], false, false),
       peg$c118 = peg$otherExpectation("Space"),
-      peg$c119 = /^[ \t]/,
-      peg$c120 = peg$classExpectation([" ", "\t"], false, false),
+      peg$c119 = /^[ \t\u202F\xA0\u2000\u2001\u2003]/,
+      peg$c120 = peg$classExpectation([" ", "\t", "\u202F", "\xA0", "\u2000", "\u2001", "\u2003"], false, false),
       peg$c121 = function() {
           return null;
         },
