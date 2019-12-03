@@ -128,7 +128,7 @@ Assignment "Assignment" = sign: SignAssignment Space* exprString: (String)
 
 // -- BLOCKS --
 
-Include "Include" = (Break/Space)* "include" Space+ source: FilePath oftype:(Space+ "type" Space+ "\""? [a-zA-Z0-9]+ "\""?)? ofwith:(Space+ "with" Space+ Dict)? Space* Break?
+Include "Include" = (Break/Space)* "include" Space+ source: (FilePath/FilePathExt) oftype:(Space+ "type" Space+ "\""? [a-zA-Z0-9]+ "\""?)? ofwith:(Space+ "with" Space+ Dict)? Space* Break?
   {
     let res = {
       action: "include",
@@ -146,7 +146,11 @@ Include "Include" = (Break/Space)* "include" Space+ source: FilePath oftype:(Spa
     return res;
   }
 
-FilePath = "\""? s:([a-zA-Z0-9.\-/]+) "\""?
+FilePath = s:([a-zA-Z0-9.\-/_\\]+)
+  {
+    return s.join('');
+  }
+FilePathExt = "\""? s:([^"]+) "\""?
   {
     return s.join('');
   }

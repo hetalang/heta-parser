@@ -201,6 +201,10 @@ let to_test = [
     source: 'namespace one begin\n  #include {source: 1.heta, type: heta};\nend',
     expectation: [{action: 'setNS', space: 'one'}, {action: 'include', space: 'one', source: '1.heta', type: 'heta'}]
   },
+  {
+    source: '\ninclude 1_.heta type heta\n',
+    expectation: [{action: 'include', source: '1_.heta', type: 'heta'}]
+  },
   // @Const
   {
     source: 'p1 @Const = 1;',
