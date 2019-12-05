@@ -72,7 +72,7 @@ Title "Title" = "'" title: $[^']+ "'"
     return { title };
   }
 
-Note "Note" = "'''" s:(!"!(''')" s:("\\'"/[^']))+ "'''" Break
+Note "Note" = "'''" s:(!"!(''')" s:("\\'"/[^']))+ "'''" (Break/Space)*
   {
     let notes = _
       .map(s, x => x[1])

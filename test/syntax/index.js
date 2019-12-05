@@ -194,6 +194,14 @@ let to_test = [
     expectation: [{id: 'a', action: 'upsert', notes: 'this is the notes'}]
   },
   {
+    source: '   \'\'\'this is the notes\'\'\'   \n   a;',
+    expectation: [{id: 'a', action: 'upsert', notes: 'this is the notes'}]
+  },
+  {
+    source: '   \'\'\'this is the notes\'\'\'   a;',
+    expectation: [{id: 'a', action: 'upsert', notes: 'this is the notes'}]
+  },
+  {
     source: 'k1 @Record \'title three words\';',
     expectation: [{id: 'k1', action: 'upsert', class: 'Record', title: 'title three words'}]
   },

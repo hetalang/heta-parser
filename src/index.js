@@ -1418,7 +1418,18 @@ function peg$parse(input, options) {
           if (peg$silentFails === 0) { peg$fail(peg$c46); }
         }
         if (s3 !== peg$FAILED) {
-          s4 = peg$parseBreak();
+          s4 = [];
+          s5 = peg$parseBreak();
+          if (s5 === peg$FAILED) {
+            s5 = peg$parseSpace();
+          }
+          while (s5 !== peg$FAILED) {
+            s4.push(s5);
+            s5 = peg$parseBreak();
+            if (s5 === peg$FAILED) {
+              s5 = peg$parseSpace();
+            }
+          }
           if (s4 !== peg$FAILED) {
             peg$savedPos = s0;
             s1 = peg$c51(s2);
