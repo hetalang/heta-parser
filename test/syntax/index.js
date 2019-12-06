@@ -258,6 +258,28 @@ let to_test = [
     description: 'empty statements',
     source: ';;;',
     expectation: []
+  },
+  {
+    description: 'start_ functions',
+    source: 'p1 .= a*b*func(1,x,y);',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      assignments: {
+        start_: {expr: 'a*b*func(1,x,y)'}
+      }
+    }]
+  },
+  {
+    description: 'start_ functions',
+    source: 'p1 .= "a*b*func(1,x,y)";',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      assignments: {
+        start_: {expr: 'a*b*func(1,x,y)'}
+      }
+    }]
   }
 ];
 

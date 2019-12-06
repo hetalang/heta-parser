@@ -92,7 +92,7 @@ DictPair = (Break/Space)* key: KeyName (Break/Space)* ":" (Break/Space)* values:
     return [key, values];
   }
 
-Assignment "Assignment" = sign: SignAssignment Space* exprString: (String)
+Assignment "Assignment" = sign: SignAssignment Space* exprString: (QuotedString/AssignString)
   {
     //console.log('= Assignment =')
     let result = {};
@@ -124,6 +124,24 @@ Assignment "Assignment" = sign: SignAssignment Space* exprString: (String)
         }
       }
     return result;
+  }
+
+// allows any string including brakes, do not trim
+QuotedString "Quoted String"= (Break/Space)* "\"" s: [^"]+ "\""
+  {
+    return s.join('');
+  }
+
+// all string until stop list, trim spaces
+AssignString "Assignment String" = s: [^;{#@']*
+  {
+    let str = s.join('').trim()
+    let doubleRegExpr = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
+    let res = doubleRegExpr.test(str)
+        ? parseFloat(str)
+        : str;
+
+    return res;
   }
 
 // -- BLOCKS --
