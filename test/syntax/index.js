@@ -280,6 +280,19 @@ let to_test = [
         start_: {expr: 'a*b*func(1,x,y)'}
       }
     }]
+  },
+  {
+    description: 'unit definition component',
+    source: 'xxx @UnitDef {components: [{kind: nM, exponent: 1}, {kind: kg, exponent: -3}]};',
+    expectation: [{
+      action: 'upsert',
+      id: 'xxx',
+      class: 'UnitDef',
+      components: [
+        {kind: 'nM', exponent: 1},
+        {kind: 'kg', exponent: -3}
+      ]
+    }]
   }
 ];
 

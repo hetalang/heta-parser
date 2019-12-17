@@ -247,18 +247,13 @@ Digit "Digit" = s: ([-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?) !.
   }
 */
 
-Array "Array"
-  = (Break/Space)*
-    "["
-    (Break/Space)*
-    items:(ValueTypes ','?)*
-    (Break/Space)*
-    "]" {
-      return items.reduce((result, x) => {
-        result.push(x[0]);
-        return result;
-      },[]);
-    }
+Array "Array" = (Break/Space)* "[" (Break/Space)* items:(ValueTypes ','? (Break/Space)*)* (Break/Space)* "]"
+  {
+    return items.reduce((result, x) => {
+      result.push(x[0]);
+      return result;
+    },[]);
+  }
 
 SignAssignment = ("="/":="/".="/"`="/("[" KeyName? "]="))
 
