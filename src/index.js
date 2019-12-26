@@ -293,7 +293,7 @@ function peg$parse(input, options) {
       peg$c72 = /^[^;{#@']/,
       peg$c73 = peg$classExpectation([";", "{", "#", "@", "'"], true, false),
       peg$c74 = function(s) {
-          let str = s.join('').trim()
+          let str = s.join('').replace(/[\s]+/g, '');
           let doubleRegExpr = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
           let res = doubleRegExpr.test(str)
               ? parseFloat(str)
@@ -1669,31 +1669,20 @@ function peg$parse(input, options) {
   }
 
   function peg$parseAssignment() {
-    var s0, s1, s2, s3;
+    var s0, s1, s2;
 
     peg$silentFails++;
     s0 = peg$currPos;
     s1 = peg$parseSignAssignment();
     if (s1 !== peg$FAILED) {
-      s2 = [];
-      s3 = peg$parseSpace();
-      while (s3 !== peg$FAILED) {
-        s2.push(s3);
-        s3 = peg$parseSpace();
+      s2 = peg$parseQuotedString();
+      if (s2 === peg$FAILED) {
+        s2 = peg$parseAssignString();
       }
       if (s2 !== peg$FAILED) {
-        s3 = peg$parseQuotedString();
-        if (s3 === peg$FAILED) {
-          s3 = peg$parseAssignString();
-        }
-        if (s3 !== peg$FAILED) {
-          peg$savedPos = s0;
-          s1 = peg$c64(s1, s3);
-          s0 = s1;
-        } else {
-          peg$currPos = s0;
-          s0 = peg$FAILED;
-        }
+        peg$savedPos = s0;
+        s1 = peg$c64(s1, s2);
+        s0 = s1;
       } else {
         peg$currPos = s0;
         s0 = peg$FAILED;

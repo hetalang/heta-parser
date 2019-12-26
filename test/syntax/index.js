@@ -261,7 +261,7 @@ let to_test = [
   },
   {
     description: 'start_ functions',
-    source: 'p1 .= a*b*func(1,x,y);',
+    source: 'p1 .= a*b*func(\n  1,\n  x,\n  y\n);',
     expectation: [{
       action: 'upsert',
       id: 'p1',
