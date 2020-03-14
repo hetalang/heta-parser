@@ -103,9 +103,9 @@ Assignment "Assignment" = sign: SignAssignment exprString: (QuotedString/AssignS
         // statement of type: []= transforms to ['[', null, ']']
         // statement of type: [sw]= transforms to ['[', 'sw', ']']
         if (sign[1]!==null) {
-          result.assignments = { [sign[1]]: {expr: clearValue} }
+          result.assignments = { [sign[1]]: clearValue }
         } else {
-          result.assignments = { "start_": {expr: clearValue} }
+          result.assignments = { "start_": clearValue }
         }
       } else {
         switch (sign) {
@@ -113,13 +113,13 @@ Assignment "Assignment" = sign: SignAssignment exprString: (QuotedString/AssignS
             result.num = clearValue;
             break;
           case ".=":
-            result.assignments = {"start_": {expr: clearValue}};
+            result.assignments = {"start_": clearValue};
             break;
           case ":=":
-            result.assignments = {"ode_": {expr: clearValue}};
+            result.assignments = {"ode_": clearValue};
             break;
           case "`=": // currently this syntax is not used in Heta
-            result.assignments = {"ode_": {expr: clearValue, increment: true}};
+            result.assignments = {"ode_": clearValue};
             break;
         }
       }

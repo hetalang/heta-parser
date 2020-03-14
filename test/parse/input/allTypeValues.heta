@@ -6,9 +6,9 @@ scn1 {
 };
 
 one::A {assignments: {
-    evt1: {expr: A+5}
+    evt1: A+5
 }};
 
 one::B {assignments: {
-    evt1: {expr: 0}
+    evt1: 0
 }};

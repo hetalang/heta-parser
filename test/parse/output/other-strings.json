@@ -11,9 +11,7 @@
     "space": "one",
     "class": "Record",
     "assignments": {
-      "ode_": {
-        "expr": "1*y"
-      }
+      "ode_": "1*y"
     }
   },
   {
@@ -22,9 +20,7 @@
     "space": "one",
     "class": "Record",
     "assignments": {
-      "ode_": {
-        "expr": "1*y"
-      }
+      "ode_": "1*y"
     }
   },
   {
@@ -33,9 +29,7 @@
     "space": "one",
     "class": "Record",
     "assignments": {
-      "ode_": {
-        "expr": "1 + 2 + 3"
-      }
+      "ode_": "1 + 2 + 3"
     }
   },
   {
@@ -44,9 +38,7 @@
     "space": "one",
     "class": "Record",
     "assignments": {
-      "ode_": {
-        "expr": "1+2+3"
-      }
+      "ode_": "1+2+3"
     }
   }
 ]

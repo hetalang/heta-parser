@@ -25,14 +25,14 @@
     "action": "upsert",
     "space": "two",
     "class": "Species",
-    "assignments": {"start_": {"expr": 0.3}}
+    "assignments": {"start_": 0.3}
   },
   {
     "id": "s2",
     "action": "upsert",
     "space": "two",
     "class": "Species",
-    "assignments": {"ode_": {"expr": "s1/2"}}
+    "assignments": {"ode_": "s1/2"}
   },
   {
     "id": "x",

@@ -19,7 +19,7 @@
     "id": "A",
     "space": "one",
     "assignments": {
-      "evt1": { "expr": "A+5" }
+      "evt1": "A+5"
     }
   },
   {
@@ -27,7 +27,7 @@
     "id": "B",
     "space": "one",
     "assignments": {
-      "evt1": { "expr": 0 }
+      "evt1": 0
     }
   }
 ]

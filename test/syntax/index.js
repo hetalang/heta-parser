@@ -5,6 +5,10 @@ const { expect } = require('chai');
 
 let to_test = [
   {
+    source: '{ id: a, class: A };',
+    expectation: [{ id: 'a', class: 'A', action: 'upsert' }]
+  },
+  {
     source: 'a;',
     expectation: [{id: 'a', action: 'upsert'}]
   },
@@ -139,43 +143,43 @@ let to_test = [
   },
   {
     source: 'one::y []= 1.1;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: {expr: 1.1}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: 1.1}}]
   },
   {
     source: 'one::y []= a/b;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: {expr: 'a/b'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: 'a/b'}}]
   },
   {
     source: 'one::y []= 1e-3*exp(z);',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: {expr: '1e-3*exp(z)'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: '1e-3*exp(z)'}}]
   },
   {
     source: 'one::y [start_]= x;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: {expr: 'x'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: 'x'}}]
   },
   {
     source: 'one::y [ode_]= x;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {ode_: {expr: 'x'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {ode_: 'x'}}]
   },
   {
     source: 'one::y [sw1]= x;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {sw1: {expr: 'x'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {sw1: 'x'}}]
   },
   {
     source: 'one::y .= x;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: {expr: 'x'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {start_: 'x'}}]
   },
   {
     source: 'one::y .= x {key: false};',
-    expectation: [{action: 'upsert', id: 'y', key: false, space: 'one', assignments: {start_: {expr: 'x'}}}]
+    expectation: [{action: 'upsert', id: 'y', key: false, space: 'one', assignments: {start_: 'x'}}]
   },
   {
     source: 'one::y := x;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {ode_: {expr: 'x'}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {ode_: 'x'}}]
   },
   {
     source: 'one::y `= x;',
-    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {ode_: {expr: 'x', increment: true}}}]
+    expectation: [{action: 'upsert', id: 'y', space: 'one', assignments: {ode_: 'x'}}]
   },
   {
     source: 'a{str: with trailing blank };',
@@ -266,7 +270,7 @@ let to_test = [
       action: 'upsert',
       id: 'p1',
       assignments: {
-        start_: {expr: 'a*b*func(1,x,y)'}
+        start_: 'a*b*func(1,x,y)'
       }
     }]
   },
@@ -277,7 +281,7 @@ let to_test = [
       action: 'upsert',
       id: 'p1',
       assignments: {
-        start_: {expr: 'a*b*func(1,x,y)'}
+        start_: 'a*b*func(1,x,y)'
       }
     }]
   },

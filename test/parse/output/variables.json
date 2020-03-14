@@ -4,7 +4,7 @@
     "id": "A",
     "space": "one",
     "assignments": {
-      "start_": {"expr": 10}
+      "start_": 10
     }
   },
   {
@@ -12,7 +12,7 @@
     "id": "B",
     "space": "one",
     "assignments": {
-      "start_": {"expr": 1e-3}
+      "start_": 1e-3
     }
   },
   {
@@ -20,7 +20,7 @@
     "id": "C",
     "space": "one",
     "assignments": {
-      "start_": {"expr": 0}
+      "start_": 0
     }
   },
   {
@@ -28,7 +28,7 @@
     "id": "r1",
     "space": "one",
     "assignments": {
-      "ode_": {"expr": "comp1*k1*A"}
+      "ode_": "comp1*k1*A"
     }
   },
   {
@@ -36,7 +36,7 @@
     "id": "r2",
     "space": "one",
     "assignments": {
-      "ode_": {"expr": "comp1*k2*B"}
+      "ode_": "comp1*k2*B"
     }
   }
 ]
