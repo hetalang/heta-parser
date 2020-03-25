@@ -127,7 +127,7 @@ Assignment "Assignment" = sign: SignAssignment exprString: (QuotedString/AssignS
   }
 
 // allows any string including brakes, do not trim
-QuotedString "Quoted String"= (Break/Space)* "\"" s: [^"]+ "\""
+QuotedString "Quoted String"= (Break/Space)* "\"" s: [^"]* "\""
   {
     return s.join('');
   }
@@ -212,14 +212,14 @@ BeginEnd = (Break/Space)*
   }
 
 // --- Lexis ---
-ValueTypes = Dict/Array/String
+ValueTypes = Dict/Array/QuotedString/String
 
 KeyName = symbol: $([A-Za-z_][A-Za-z0-9_]*)
   {
     return symbol;
   }
 
-String "String" = (Break/Space)* s:(('"'[^"]+'"')/[^,[\]{};]+)
+String "String" = (Break/Space)* s:([^,[\]{};]+)
   {
     let res;
     if (s.length === 3 && Array.isArray(s[1])) {

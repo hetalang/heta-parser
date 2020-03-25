@@ -264,6 +264,15 @@ let to_test = [
     expectation: []
   },
   {
+    description: 'statements with blanks and many semicolons',
+    source: ' a=1.1  ; ;  ;',
+    expectation: [{
+      action: 'upsert',
+      id: 'a', 
+      num: 1.1
+    }]
+  },
+  {
     description: 'start_ functions',
     source: 'p1 .= a*b*func(\n  1,\n  x,\n  y\n);',
     expectation: [{
@@ -296,6 +305,24 @@ let to_test = [
         {kind: 'nM', exponent: 1},
         {kind: 'kg', exponent: -3}
       ]
+    }]
+  },
+  {
+    description: 'Empty MathExpr in dictionary',
+    source: 'p1 { assignments: {start_: ""}};',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      assignments: { start_: '' }
+    }]
+  },
+  {
+    description: 'Empty MathExpr in sugar assignment',
+    source: 'p1 .= ;',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      assignments: { start_: '' }
     }]
   }
 ];
