@@ -29,7 +29,7 @@ LineComment
 MultylineComment
   = (Space/Break)*
     "/*"
-    s:(!"*/" s:(.))+
+    s:(!"*/" s:(.))*
     "*/"
     {
       return null;

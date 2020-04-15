@@ -1,5 +1,6 @@
 node_modules/
-draft/
+/draft
+/drafts
 test/draft.js
 .nyc_output
 /coverage
