@@ -116,6 +116,10 @@ let to_test = [
     source: '@clss1 sp1::a {key: false};',
     expectation: [{id: 'a', space:'sp1', action: 'upsert', class: 'Clss1', key: false}]
   },
+  {
+    source: 'x1 := (true and false) ? 1 : 2;',
+    expectation: [{id: 'x1', action: 'upsert', assignments: {ode_ : '(true and false) ? 1 : 2'}}]
+  },
 
   {
     source: 'x=1;',
@@ -279,7 +283,7 @@ let to_test = [
       action: 'upsert',
       id: 'p1',
       assignments: {
-        start_: 'a*b*func(1,x,y)'
+        start_: 'a*b*func( 1, x, y )'
       }
     }]
   },

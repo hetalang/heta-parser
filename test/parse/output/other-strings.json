@@ -38,7 +38,7 @@
     "space": "one",
     "class": "Record",
     "assignments": {
-      "ode_": "1+2+3"
+      "ode_": "1 + 2 + 3"
     }
   }
 ]

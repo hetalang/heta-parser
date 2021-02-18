@@ -293,7 +293,7 @@ function peg$parse(input, options) {
       peg$c72 = /^[^;{#@']/,
       peg$c73 = peg$classExpectation([";", "{", "#", "@", "'"], true, false),
       peg$c74 = function(s) {
-          let str = s.join('').replace(/[\s]+/g, '');
+          let str = s.join('').replace(/[\s]+/g, ' ').replace(/^ +/g, '').replace(/ +$/g, '');
           let doubleRegExpr = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
           let res = doubleRegExpr.test(str)
               ? parseFloat(str)

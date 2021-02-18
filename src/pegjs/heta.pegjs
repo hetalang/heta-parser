@@ -135,7 +135,7 @@ QuotedString "Quoted String"= (Break/Space)* "\"" s: [^"]* "\""
 // all string until stop list, trim spaces
 AssignString "Assignment String" = s: [^;{#@']*
   {
-    let str = s.join('').replace(/[\s]+/g, '');
+    let str = s.join('').replace(/[\s]+/g, ' ').replace(/^ +/g, '').replace(/ +$/g, '');
     let doubleRegExpr = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
     let res = doubleRegExpr.test(str)
         ? parseFloat(str)
