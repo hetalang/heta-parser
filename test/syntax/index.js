@@ -360,13 +360,42 @@ let to_test = [
     }]
   },
   {
-    description: 'Comments inside dict 3',
+    description: 'Comments inside dict 4',
     source: 'r1 { /* comment 0 */ actors: s1=>s2, /* comment 1 */ modifiers: [m1]};',
     expectation: [{
       action: 'upsert',
       id: 'r1',
       actors: 's1=>s2',
       modifiers: ['m1']
+    }]
+  },
+  {
+    description: 'Comments inside dict 5',
+    source: 'm1 {compartment: c1, // comment \n} .= 0;',
+    expectation: [{
+      action: 'upsert',
+      id: 'm1',
+      compartment: 'c1',
+      assignments: {start_: 0}
+    }]
+  },
+  {
+    description: 'Comments inside dict 6',
+    source: 'm1 {compartment: c1 // comment \n} .= 0;',
+    expectation: [{
+      action: 'upsert',
+      id: 'm1',
+      compartment: 'c1',
+      assignments: {start_: 0}
+    }]
+  },
+  {
+    description: 'Comments inside array 1',
+    source: 'x1 {array: [ // comment 0 \n one, // comment 1 \n two, three // comment 3\n]};',
+    expectation: [{
+      action: 'upsert',
+      id: 'x1',
+      array: ['one', 'two', 'three']
     }]
   }
 ];

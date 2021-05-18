@@ -219,7 +219,7 @@ KeyName = symbol: $([A-Za-z_][A-Za-z0-9_]*)
     return symbol;
   }
 
-String "String" = (Break/Space)* s:([^,[\]{};]+)
+String "String" = (Break/Space)* s:([^,[\]{};/]+)
   {
     let res;
     if (s.length === 3 && Array.isArray(s[1])) {
@@ -247,12 +247,17 @@ Digit "Digit" = s: ([-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?) !.
   }
 */
 
-Array "Array" = (Break/Space)* "[" (Break/Space)* items:(ValueTypes ','? (Break/Space)*)* (Break/Space)* "]"
+Array "Array" = "[" (Break/Space)* Comment? items:ArrayValue* (Break/Space)* "]"
   {
     return items.reduce((result, x) => {
-      result.push(x[0]);
+      result.push(x);
       return result;
     },[]);
+  }
+
+ArrayValue "ArrayValue" = (Break/Space)* value: ValueTypes ","? Comment?
+  {
+    return value;
   }
 
 SignAssignment = ("="/":="/".="/"`="/("[" KeyName? "]="))
