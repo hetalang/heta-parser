@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "commander": "^2.20.3",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "pegjs": "^0.10.0"
   }
 }
