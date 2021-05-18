@@ -1,6 +1,6 @@
 {
   "name": "heta-parser",
-  "version": "0.3.12",
+  "version": "0.3.13",
   "description": "Parsing of Heta-language files.",
   "main": "src/index.js",
   "bin": {
