@@ -4,7 +4,7 @@
   const _ = require('lodash');
 }
 
-start = result: (MultylineComment/LineComment/Block/Include/BaseStruct/NamespaceBlock)+ (Break/Space)*
+start = result: (Comment/Block/Include/BaseStruct/NamespaceBlock)+ (Break/Space)*
   {
     return _
       .chain(result)
@@ -82,7 +82,7 @@ Note "Note" = "'''" s:(!"!(''')" s:("\\'"/[^']))+ "'''" (Break/Space)*
     return { notes };
   }
 
-Dict "Dict" = "{"  (Break/Space)* item: DictPair* (Break/Space)* "}"
+Dict "Dict" = "{" (Break/Space)* Comment? item: DictPair* (Break/Space)* "}"
   {
     return _.fromPairs(item);
   }
@@ -202,7 +202,7 @@ NamespaceBlock = (Break/Space)* type: ("abstract"/"concrete")? (Break/Space)* "n
 
 BeginEnd = (Break/Space)*
   "begin" (Break/Space)+
-  internal: (MultylineComment/LineComment/Include/BaseStruct/Block)* (Break/Space)* 
+  internal: (Comment/Include/BaseStruct/Block)* (Break/Space)* 
   "end" (Break/Space)*
   {
     return _.chain(internal)

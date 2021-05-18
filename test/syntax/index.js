@@ -328,6 +328,46 @@ let to_test = [
       id: 'p1',
       assignments: { start_: '' }
     }]
+  },
+  {
+    description: 'Comments inside dict 1',
+    source: 'r1 { actors: s1=>s2, // comment 1\nmodifiers: [m1] //comment 2\n};',
+    expectation: [{
+      action: 'upsert',
+      id: 'r1',
+      actors: 's1=>s2',
+      modifiers: ['m1']
+    }]
+  },
+  {
+    description: 'Comments inside dict 2',
+    source: 'r1 { // comment 0\nactors: s1=>s2, modifiers: [m1]};',
+    expectation: [{
+      action: 'upsert',
+      id: 'r1',
+      actors: 's1=>s2',
+      modifiers: ['m1']
+    }]
+  },
+  {
+    description: 'Comments inside dict 3',
+    source: 'r1 { // comment 0\n  actors: s1=>s2, modifiers: [m1]};',
+    expectation: [{
+      action: 'upsert',
+      id: 'r1',
+      actors: 's1=>s2',
+      modifiers: ['m1']
+    }]
+  },
+  {
+    description: 'Comments inside dict 3',
+    source: 'r1 { /* comment 0 */ actors: s1=>s2, /* comment 1 */ modifiers: [m1]};',
+    expectation: [{
+      action: 'upsert',
+      id: 'r1',
+      actors: 's1=>s2',
+      modifiers: ['m1']
+    }]
   }
 ];
 

@@ -7,7 +7,7 @@
 
 # Heta parser
 
-Parsing of Heta language code in JavaScript.
+Parsing of the Heta language code in JavaScript.
 
 *This is part of [Heta project](https://hetalang.github.io/) project.*
 
@@ -30,4 +30,4 @@ heta run ./path/to/file.heta >> output.json
 
 ## Copyright
 
-&copy; 2019-2020 InSysBio LLC
+&copy; 2019-2021 InSysBio LLC
