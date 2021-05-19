@@ -29,7 +29,7 @@ LineComment
 MultylineComment
   = (Space/Break)*
     "/*"
-    s:(!"*/" s:(.))*
+    (!"*/" .)*
     "*/"
     {
       return null;
@@ -87,9 +87,9 @@ Dict "Dict" = "{" (Break/Space)* Comment? item: DictPair* (Break/Space)* "}"
     return _.fromPairs(item);
   }
 
-DictPair = (Break/Space)* key: KeyName (Break/Space)* ":" (Break/Space)* values: ValueTypes ","? Comment?
+DictPair = (Break/Space)* key: KeyName (Break/Space)* ":" (Break/Space)* value: ValueTypes ","? Comment?
   {
-    return [key, values];
+    return [key, value];
   }
 
 Assignment "Assignment" = sign: SignAssignment exprString: (QuotedString/AssignString)
@@ -219,33 +219,24 @@ KeyName = symbol: $([A-Za-z_][A-Za-z0-9_]*)
     return symbol;
   }
 
-String "String" = (Break/Space)* s:([^,[\]{};/]+)
+String "String" = (Break/Space)* s: $([^,[\]{};] !"//" !"/*")+ Comment?
   {
-    let res;
-    if (s.length === 3 && Array.isArray(s[1])) {
-      res = s[1].join('')
+    let str = s.trim()
+
+    // XXX: alternative but bad solution, remove trailing comments
+    //let str = s.match(/\s*(.*?)\s*(?:\/\/|\/\*|$)/)[1] // ignores text after // or /*
+
+    if (str === 'true') {
+      var res = true
+    } else if (str === 'false') {
+      res = false
+    } else if (/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/.test(str)){
+      res = parseFloat(str);
     } else {
-      let str = s.join('').trim()
-      if (str === 'true') {
-        res = true
-      } else if (str === 'false') {
-        res = false
-      } else if (/^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/.test(str)){
-        res = parseFloat(str);
-      } else {
-        res = str;
-      }
+      res = str;
     }
     return res;
   }
-
-/* XXX: currently not used: all type conversion in String
-Digit "Digit" = s: ([-+]?[0-9]+[.]?[0-9]*([eE][-+]?[0-9]+)?) !.
-  {
-    console.log('= Digit = ', s)
-    return parseFloat(_.flatten(s).join(''));
-  }
-*/
 
 Array "Array" = "[" (Break/Space)* Comment? items:ArrayValue* (Break/Space)* "]"
   {

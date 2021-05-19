@@ -194,6 +194,10 @@ let to_test = [
     expectation: [{id: 'a', action: 'upsert', str: 'with trailing blank '}]
   },
   {
+    source: 'a{str: with trailing comma ,};',
+    expectation: [{id: 'a', action: 'upsert', str: 'with trailing comma'}]
+  },
+  {
     source: 'block @Class1 {title: title1 } begin y @Class2 { title: title1, compartment: comp1 }; end',
     expectation: [{id: 'y', action: 'upsert', class: 'Class2', title: 'title1', compartment: 'comp1'}]
   },
@@ -380,13 +384,40 @@ let to_test = [
     }]
   },
   {
-    description: 'Comments inside dict 6',
-    source: 'm1 {compartment: c1 // comment \n} .= 0;',
+    description: 'Comments inside dict 6a',
+    source: 'm1 {compartment: c1 // comment \n};',
+    expectation: [{
+      action: 'upsert',
+      id: 'm1',
+      compartment: 'c1'
+    }]
+  },
+  {
+    description: 'Comments inside dict 6b',
+    source: 'm1 {compartment: c1 /* comment */,\n xxx: 12};',
     expectation: [{
       action: 'upsert',
       id: 'm1',
       compartment: 'c1',
-      assignments: {start_: 0}
+      xxx: 12
+    }]
+  },
+  {
+    description: 'Comments inside dict 7',
+    source: 'm1 {array: [] // comment \n};',
+    expectation: [{
+      action: 'upsert',
+      id: 'm1',
+      array: []
+    }]
+  },
+  {
+    description: 'Comments inside dict 8',
+    source: 'm1 {obj: {} // comment \n};',
+    expectation: [{
+      action: 'upsert',
+      id: 'm1',
+      obj: {}
     }]
   },
   {
@@ -396,6 +427,15 @@ let to_test = [
       action: 'upsert',
       id: 'x1',
       array: ['one', 'two', 'three']
+    }]
+  },
+  {
+    description: '/ sign in string',
+    source: 'p1 {string: xxx/yyy};',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      string: 'xxx/yyy'
     }]
   }
 ];
