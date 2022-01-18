@@ -23,3 +23,17 @@ scn2 {
   type: kinetic,
   method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
 };
+
+scn3 {
+  //class: Model,
+  scope: one,
+  type: kinetic,
+  method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
+};
+
+scn4 {
+  //class: Model,
+  //scope: one,
+  type: kinetic,
+  method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
+};

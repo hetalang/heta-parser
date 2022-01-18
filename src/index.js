@@ -1488,9 +1488,11 @@ function peg$parse(input, options) {
         }
       }
       if (s2 !== peg$FAILED) {
-        s3 = peg$parseComment();
-        if (s3 === peg$FAILED) {
-          s3 = null;
+        s3 = [];
+        s4 = peg$parseComment();
+        while (s4 !== peg$FAILED) {
+          s3.push(s4);
+          s4 = peg$parseComment();
         }
         if (s3 !== peg$FAILED) {
           s4 = [];
