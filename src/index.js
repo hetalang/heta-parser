@@ -142,13 +142,11 @@ function peg$parse(input, options) {
       peg$startRuleFunction  = peg$parsestart,
 
       peg$c0 = function(result) {
-          return _
-            .chain(result)
-            .flatten()
-            .compact()
+          return result
+            .flat(1)
+            .filter(x => !!x)
             .filter((x) => Object.keys(x).length > 0)
-            .forEach((x) => _.defaults(x, {action: 'upsert'}))
-            .value();
+            .map((x) => Object.assign({action: 'upsert'}, x));
         },
       peg$c1 = peg$otherExpectation("Comment"),
       peg$c2 = "//",
@@ -205,7 +203,7 @@ function peg$parse(input, options) {
       peg$c34 = "@",
       peg$c35 = peg$literalExpectation("@", false),
       peg$c36 = function(type) {
-          return { class: _.upperFirst(type) };
+          return { class: type[0].toUpperCase() + type.slice(1) }; // replace first letter to capital
         },
       peg$c37 = peg$otherExpectation("Title"),
       peg$c38 = "'",
@@ -223,8 +221,8 @@ function peg$parse(input, options) {
       peg$c48 = "\\'",
       peg$c49 = peg$literalExpectation("\\'", false),
       peg$c50 = function(s) {
-          let notes = _
-            .map(s, x => x[1])
+          let notes = s
+            .map(x => x[1])
             .join('')
             .replace(/\\'/g, "'")
             .replace(/\r/g, '');
@@ -236,7 +234,9 @@ function peg$parse(input, options) {
       peg$c54 = "}",
       peg$c55 = peg$literalExpectation("}", false),
       peg$c56 = function(item) {
-          return _.fromPairs(item);
+          let res = {};
+          item.forEach(([key, value]) => res[key] = value);
+          return res;
         },
       peg$c57 = ":",
       peg$c58 = peg$literalExpectation(":", false),
@@ -352,10 +352,9 @@ function peg$parse(input, options) {
           return qArr;
         },
       peg$c92 = function(internal) {
-          return _.chain(internal)
-              .flatten()
-              .compact()
-              .value();
+          return internal
+            .flat(1)
+            .filter(x => !!x);
         },
       peg$c93 = /^[A-Za-z_]/,
       peg$c94 = peg$classExpectation([["A", "Z"], ["a", "z"], "_"], false, false),
@@ -3165,10 +3164,6 @@ function peg$parse(input, options) {
 
     return s0;
   }
-
-
-    const _ = require('lodash');
-
 
   peg$result = peg$startRuleFunction();
 

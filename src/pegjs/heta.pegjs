@@ -1,18 +1,12 @@
 // parser generator: https://pegjs.org/
 
-{
-  const _ = require('lodash');
-}
-
 start = result: (Comment/Block/Include/BaseStruct/NamespaceBlock)+ (Break/Space)*
   {
-    return _
-      .chain(result)
-      .flatten()
-      .compact()
+    return result
+      .flat(1)
+      .filter(x => !!x)
       .filter((x) => Object.keys(x).length > 0)
-      .forEach((x) => _.defaults(x, {action: 'upsert'}))
-      .value();
+      .map((x) => Object.assign({action: 'upsert'}, x));
   }
 
 // --- Grammar ---
@@ -65,7 +59,7 @@ Action "Action" = "#" action: KeyName
   }
 Type "Type" = "@" type: KeyName
   {
-    return { class: _.upperFirst(type) };
+    return { class: type[0].toUpperCase() + type.slice(1) }; // replace first letter to capital
   }
 Title "Title" = "'" title: $[^']+ "'"
   {
@@ -74,8 +68,8 @@ Title "Title" = "'" title: $[^']+ "'"
 
 Note "Note" = "'''" s:(!"!(''')" s:("\\'"/[^']))+ "'''" (Break/Space)*
   {
-    let notes = _
-      .map(s, x => x[1])
+    let notes = s
+      .map(x => x[1])
       .join('')
       .replace(/\\'/g, "'")
       .replace(/\r/g, '');
@@ -84,7 +78,9 @@ Note "Note" = "'''" s:(!"!(''')" s:("\\'"/[^']))+ "'''" (Break/Space)*
 
 Dict "Dict" = "{" (Break/Space/Comment)* item: DictPair* (Break/Space/Comment)* "}"
   {
-    return _.fromPairs(item);
+    let res = {};
+    item.forEach(([key, value]) => res[key] = value);
+    return res;
   }
 
 DictPair = (Break/Space)* key: KeyName (Break/Space)* ":" (Break/Space)* value: ValueTypes ","? Comment?
@@ -205,10 +201,9 @@ BeginEnd = (Break/Space)*
   internal: (Comment/Include/BaseStruct/Block)* (Break/Space)* 
   "end" (Break/Space)*
   {
-    return _.chain(internal)
-        .flatten()
-        .compact()
-        .value();
+    return internal
+      .flat(1)
+      .filter(x => !!x);
   }
 
 // --- Lexis ---
