@@ -31,13 +31,13 @@
   ],
   "license": "Apache-2.0",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "coveralls": "^3.0.11",
-    "mocha": "^9.1.4",
-    "nyc": "^15.0.0"
+    "chai": "^4.3.10",
+    "coveralls": "^3.1.1",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0"
   },
   "dependencies": {
-    "commander": "^2.20.3",
+    "commander": "^11.1.0",
     "lodash": "^4.17.21",
     "pegjs": "^0.10.0"
   }
