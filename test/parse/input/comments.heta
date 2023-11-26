@@ -37,3 +37,9 @@ scn4 {
   type: kinetic,
   method: {timeRange: [0,120], timeStep: 2, solver: lsoda}
 };
+
+scn5 {
+  class: Model,
+  //scope: one,
+  //type: kinetic
+};

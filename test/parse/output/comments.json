@@ -55,5 +55,10 @@
       "timeStep": 2,
       "solver": "lsoda"
     }
+  },
+  {
+    "action": "upsert",
+    "id": "scn5",
+    "class": "Model"
   }
 ]

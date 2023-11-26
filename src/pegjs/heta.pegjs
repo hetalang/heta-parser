@@ -82,7 +82,7 @@ Note "Note" = "'''" s:(!"!(''')" s:("\\'"/[^']))+ "'''" (Break/Space)*
     return { notes };
   }
 
-Dict "Dict" = "{" (Break/Space)* Comment* item: DictPair* (Break/Space)* "}"
+Dict "Dict" = "{" (Break/Space/Comment)* item: DictPair* (Break/Space/Comment)* "}"
   {
     return _.fromPairs(item);
   }
