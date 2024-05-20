@@ -18,5 +18,19 @@
     "class": "Species",
     "compartment": "comp1",
     "notes": "\nThis is very long text. This is very long text's.\nThis is very long text. This is very long text.\nThis is very long text. This is very long text. This is very long text. This is very long text.\nThis is very long text.\n"
+  },
+  {
+    "id": "k1",
+    "action": "upsert",
+    "class": "Const",
+    "notes": "Notes with trailing comment",
+    "num": 1.1
+  },
+  {
+    "id": "k1",
+    "action": "upsert",
+    "class": "Const",
+    "notes": "Notes with trailing comment",
+    "num": 1.1
   }
 ]

@@ -11,3 +11,11 @@ This is very long text. This is very long text. This is very long text. This is 
 This is very long text.
 '''
 S4 @species {compartment: comp1};
+
+'''Notes with trailing comment'''
+/* This is comment */
+k1 @Const = 1.1;
+
+'''Notes with trailing comment'''
+// This is comment
+k1 @Const = 1.1;

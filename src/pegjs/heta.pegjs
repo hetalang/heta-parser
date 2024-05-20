@@ -29,7 +29,7 @@ MultylineComment
       return null;
     }
 
-BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignment)* EndSign
+BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignment/MultylineComment/LineComment)* EndSign
   {
     let res = Object.assign({}, ...fullLine);
     return res;

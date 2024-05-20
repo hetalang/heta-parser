@@ -880,6 +880,12 @@ function peg$parse(input, options) {
                     s2 = peg$parseDict();
                     if (s2 === peg$FAILED) {
                       s2 = peg$parseAssignment();
+                      if (s2 === peg$FAILED) {
+                        s2 = peg$parseMultylineComment();
+                        if (s2 === peg$FAILED) {
+                          s2 = peg$parseLineComment();
+                        }
+                      }
                     }
                   }
                 }
@@ -910,6 +916,12 @@ function peg$parse(input, options) {
                       s2 = peg$parseDict();
                       if (s2 === peg$FAILED) {
                         s2 = peg$parseAssignment();
+                        if (s2 === peg$FAILED) {
+                          s2 = peg$parseMultylineComment();
+                          if (s2 === peg$FAILED) {
+                            s2 = peg$parseLineComment();
+                          }
+                        }
                       }
                     }
                   }
