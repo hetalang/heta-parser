@@ -30,4 +30,4 @@ heta run ./path/to/file.heta >> output.json
 
 ## Copyright
 
-&copy; 2019-2023 InSysBio CY Ltd
+&copy; 2019-2024 InSysBio CY Ltd
