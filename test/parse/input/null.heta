@@ -1,0 +1,4 @@
+x1 @Record := 5;
+x1 := null;
+
+x2 @Record {assignments: {start_: null}};

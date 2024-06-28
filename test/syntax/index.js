@@ -437,6 +437,52 @@ let to_test = [
       id: 'p1',
       string: 'xxx/yyy'
     }]
+  },
+  // null
+  {
+    description: 'null as property',
+    source: 'p1 {key: null};',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      key: null
+    }]
+  },
+  {
+    description: 'null as deep property',
+    source: 'p1 {key: {subkey: null}};',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      key: {subkey: null}
+    }]
+  },
+  {
+    description: 'null as array element',
+    source: 'p1 {key: [null]};',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      key: [null]
+    }]
+  },
+  {
+    description: 'null inside assignment',
+    source: 'p1 .= null;',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      assignments: {start_: null}
+    }]
+  },
+  {
+    description: 'null inside assignment expression',
+    source: 'p1 .= a + null;',
+    expectation: [{
+      action: 'upsert',
+      id: 'p1',
+      assignments: {start_: 'a + null'}
+    }]
   }
 ];
 

@@ -21,6 +21,7 @@ const cases = [
   { source: './input/other-tabs.heta', target: './output/other-tabs.json' },
   { source: './input/other-strings.heta', target: './output/other-strings.json' },
   { source: './input/empty-statement.heta', target: './output/empty-statement.json' },
+  { source: './input/null.heta', target: './output/null.json' },
 ];
 
 describe('Check "parse"', () => {

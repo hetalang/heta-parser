@@ -1,0 +1,5 @@
+[
+    { "action": "upsert", "id": "x1", "class": "Record", "assignments": {"ode_": 5}},
+    { "action": "upsert", "id": "x1", "assignments": {"ode_": null}},
+    { "action": "upsert", "id": "x2", "class": "Record", "assignments": {"start_": null}}
+]

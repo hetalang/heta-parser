@@ -290,13 +290,23 @@ function peg$parse(input, options) {
       peg$c71 = /^[^;{#@']/,
       peg$c72 = peg$classExpectation([";", "{", "#", "@", "'"], true, false),
       peg$c73 = function(s) {
-          let str = s.join('').replace(/[\s]+/g, ' ').replace(/^ +/g, '').replace(/ +$/g, '');
+          let str = s.join('')
+            .replace(/[\s]+/g, ' ') // remove multiple spaces
+            .replace(/^ +/g, '')    // remove leading spaces
+            .replace(/ +$/g, '');   // remove trailing spaces
           let doubleRegExpr = /^[-+]?[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?$/;
-          let res = doubleRegExpr.test(str)
-              ? parseFloat(str)
-              : str;
-
-          return res;
+          
+          if (str === 'null') {
+            return null;
+          } else if (str === 'true') {
+            return true;
+          } else if (str === 'false') {
+            return false;
+          } else if (doubleRegExpr.test(str)) {
+            return parseFloat(str);
+          } else {
+            return str;
+          }
         },
       peg$c74 = peg$otherExpectation("Include"),
       peg$c75 = "include",
@@ -372,7 +382,9 @@ function peg$parse(input, options) {
           // XXX: alternative but bad solution, remove trailing comments
           //let str = s.match(/\s*(.*?)\s*(?:\/\/|\/\*|$)/)[1] // ignores text after // or /*
 
-          if (str === 'true') {
+          if (str === 'null') {
+            res = null;
+          } else if (str === 'true') {
             var res = true
           } else if (str === 'false') {
             res = false

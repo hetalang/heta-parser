@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "npm run generate && mocha test --recursive",
-    "test:dev": "npm run generate && mocha ./test/parse",
+    "test:dev": "npm run generate && mocha ./test/syntax",
     "test:cov": "nyc --reporter=lcov npm run test",
     "test:bin": "npm run generate && node bin/heta.js run test/parse/input/include.heta",
     "generate": "pegjs -o src/index.js src/pegjs/heta.pegjs"
