@@ -337,9 +337,9 @@ function peg$parse(input, options) {
       peg$c85 = peg$classExpectation([["a", "z"], ["A", "Z"], ["0", "9"], ".", "-", "/", "_", "\\"], false, false),
       peg$c86 = function(fullLine, block) {
           let blockObj = Object.assign({}, ...fullLine);
-          let qArr = !block
-            ? []
-            : block.map((x) => Object.assign({}, blockObj, x));
+          //let qArr = !block ? [] : block.map((x) => Object.assign({}, blockObj, x));
+          let qArr = block && block.filter((x) => Object.keys(x).length > 0)
+            .map((x) => Object.assign({}, blockObj, x));
           return qArr;
         },
       peg$c87 = "abstract",
@@ -352,12 +352,10 @@ function peg$parse(input, options) {
           if(type) q0.type = type;
           let qArr = [q0];
           
-          if(block){
-            block.map((x) => {
-              let q = Object.assign({}, {space: space}, x);
+          block && block.filter((x) => Object.keys(x).length > 0).forEach((x) => {
+              let q = Object.assign({space: space}, x);
               qArr.push(q);
-            });
-          }
+          });
 
           return qArr;
         },

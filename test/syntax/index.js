@@ -202,6 +202,14 @@ let to_test = [
     expectation: [{id: 'y', action: 'upsert', class: 'Class2', title: 'title1', compartment: 'comp1'}]
   },
   {
+    source: 'y;;',
+    expectation: [{id: 'y', action: 'upsert'}]
+  },
+  {
+    source: 'block {title: title1} begin y;;; end',
+    expectation: [{id: 'y', action: 'upsert', title: 'title1'}]
+  },
+  {
     source: '\'\'\'this is the notes\'\'\'\na;',
     expectation: [{id: 'a', action: 'upsert', notes: 'this is the notes'}]
   },
@@ -220,6 +228,10 @@ let to_test = [
   {
     source: 'namespace one begin\n  #include {source: 1.heta, type: heta};\nend',
     expectation: [{action: 'setNS', space: 'one'}, {action: 'include', space: 'one', source: '1.heta', type: 'heta'}]
+  },
+  {
+    source: 'namespace one begin x1;;; end',
+    expectation: [{action: 'setNS', space: 'one'}, {id: 'x1', action: 'upsert', space: 'one'}]
   },
   {
     source: '\ninclude 1_.heta type heta\n',

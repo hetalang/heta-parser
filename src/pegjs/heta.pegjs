@@ -182,9 +182,9 @@ FilePathExt = "\""? s:([^"]+) "\""?
 Block = (Break/Space)* "block" fullLine: (Space/Index/Action/Type/Title/Dict/Assignment)+ block: BeginEnd
   {
     let blockObj = Object.assign({}, ...fullLine);
-    let qArr = !block
-      ? []
-      : block.map((x) => Object.assign({}, blockObj, x));
+    //let qArr = !block ? [] : block.map((x) => Object.assign({}, blockObj, x));
+    let qArr = block && block.filter((x) => Object.keys(x).length > 0)
+      .map((x) => Object.assign({}, blockObj, x));
     return qArr;
   }
 
@@ -196,12 +196,10 @@ NamespaceBlock = (Break/Space)* type: ("abstract"/"concrete")? (Break/Space)* "n
     if(type) q0.type = type;
     let qArr = [q0];
     
-    if(block){
-      block.map((x) => {
-        let q = Object.assign({}, {space: space}, x);
+    block && block.filter((x) => Object.keys(x).length > 0).forEach((x) => {
+        let q = Object.assign({space: space}, x);
         qArr.push(q);
-      });
-    }
+    });
 
     return qArr;
   }
