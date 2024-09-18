@@ -495,7 +495,53 @@ let to_test = [
       id: 'p1',
       assignments: {start_: 'a + null'}
     }]
-  }
+  },
+  // strings
+  {
+    description: 'complex strings with \"',
+    source: '{aux: "a\\"b"};',
+    expectation: [{action: 'upsert', aux: 'a"b'}]
+  },
+  {
+    description: 'complex strings with //',
+    source: '{aux: "http://b.x"};',
+    expectation: [{action: 'upsert', aux: 'http://b.x'}]
+  },
+  {
+    description: 'complex strings with /*xxx*/',
+    source: '{aux: "/*xxx"};',
+    expectation: [{action: 'upsert', aux: '/*xxx'}]
+  },
+  {
+    description: 'complex strings with \n',
+    source: '{aux: "a\nb"};',
+    expectation: [{action: 'upsert', aux: 'a\nb'}]
+  },
+  {
+    description: 'complex strings with \n witout ""',
+    source: '{aux: a\nb};',
+    expectation: [{action: 'upsert', aux: 'a\nb'}]
+  },
+  {
+    description: 'complex strings with \r\r\n witout ""',
+    source: '{aux: a\r\r\nb};',
+    expectation: [{action: 'upsert', aux: 'a\r\r\nb'}]
+  },
+  {
+    description: 'complex strings with // as comment',
+    source: '{aux: a //b\n};',
+    expectation: [{action: 'upsert', aux: 'a'}]
+  },
+  {
+    description: 'complex strings with // as comment',
+    source: '{aux: a,//b\n};',
+    expectation: [{action: 'upsert', aux: 'a'}]
+  },
+  /*{
+    description: 'complex strings with // as comment',
+    source: '{aux: a//comment\n};',
+    expectation: [{action: 'upsert', aux: 'a'}]
+  }*/
 ];
 
 describe('Single object parsing.', () => {

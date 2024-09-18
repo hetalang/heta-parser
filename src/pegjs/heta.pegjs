@@ -123,9 +123,14 @@ Assignment "Assignment" = sign: SignAssignment exprString: (QuotedString/AssignS
   }
 
 // allows any string including brakes, do not trim
-QuotedString "Quoted String"= (Break/Space)* "\"" s: [^"]* "\""
+QuotedString "Quoted String" = (Break/Space)* '"' s: (escapedQuote/[^"])* '"'
   {
     return s.join('');
+  }
+
+escapedQuote = '\\"'
+  {
+      return '"';
   }
 
 // all string until stop list, trim spaces
@@ -225,9 +230,6 @@ KeyName = symbol: $([A-Za-z_][A-Za-z0-9_]*)
 String "String" = (Break/Space)* s: $([^,[\]{};] !"//" !"/*")+ Comment?
   {
     let str = s.trim()
-
-    // XXX: alternative but bad solution, remove trailing comments
-    //let str = s.match(/\s*(.*?)\s*(?:\/\/|\/\*|$)/)[1] // ignores text after // or /*
 
     if (str === 'null') {
       res = null;
