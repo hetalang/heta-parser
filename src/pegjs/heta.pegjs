@@ -83,7 +83,7 @@ Dict "Dict" = "{" (Break/Space/Comment)* item: DictPair* (Break/Space/Comment)* 
     return res;
   }
 
-DictPair = (Break/Space)* key: KeyName (Break/Space)* ":" (Break/Space)* value: ValueTypes ","? Comment?
+DictPair = (Break/Space)* key: KeyName (Break/Space)* ":" (Break/Space)* value: ValueTypes ","? Comment*
   {
     return [key, value];
   }
@@ -227,9 +227,10 @@ KeyName = symbol: $([A-Za-z_][A-Za-z0-9_]*)
     return symbol;
   }
 
-String "String" = (Break/Space)* s: $([^,[\]{};] !"//" !"/*")+ Comment?
+//String "String" = (Break/Space)* s: $([^,[\]{};] !"//" !"/*")+ (Comment)*
+String "String" = (Break/Space)* s: (Comment/[^,[\]{};])+
   {
-    let str = s.trim()
+    let str = s.join('').trim()
 
     if (str === 'null') {
       res = null;

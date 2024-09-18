@@ -537,11 +537,26 @@ let to_test = [
     source: '{aux: a,//b\n};',
     expectation: [{action: 'upsert', aux: 'a'}]
   },
-  /*{
+  {
     description: 'complex strings with // as comment',
     source: '{aux: a//comment\n};',
     expectation: [{action: 'upsert', aux: 'a'}]
-  }*/
+  },
+  {
+    descrition: 'complex strings with /* */as comment',
+    source: '{aux: a/*b*/};',
+    expectation: [{action: 'upsert', aux: 'a'}]
+  },
+  {
+    description: 'no strings with /* */ as comment',
+    source: '{aux: /*b */a};',
+    expectation: [{action: 'upsert', aux: 'a'}]
+  },
+  {
+    description: 'no strings with /* */ as comment',
+    source: '{aux: /*b */};',
+    expectation: [{action: 'upsert', aux: ''}]
+  }
 ];
 
 describe('Single object parsing.', () => {
