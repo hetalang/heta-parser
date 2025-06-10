@@ -556,6 +556,27 @@ let to_test = [
     description: 'no strings with /* */ as comment',
     source: '{aux: /*b */};',
     expectation: [{action: 'upsert', aux: ''}]
+  },
+  
+  {
+    description: 'names started with "end"',
+    source: 'end1 {key: value};',
+    expectation: [{action: 'upsert', id: 'end1', key: 'value'}]
+  },
+  {
+    description: 'names started with "block"',
+    source: 'block1 {key: value};',
+    expectation: [{action: 'upsert', id: 'block1', key: 'value'}]
+  },
+  {
+    description: 'names started with "namespace"',
+    source: 'namespace1 {key: value};',
+    expectation: [{action: 'upsert', id: 'namespace1', key: 'value'}]
+  },
+  {
+    description: 'names started with "begin"',
+    source: 'begin1 {key: value};', 
+    expectation: [{action: 'upsert', id: 'begin1', key: 'value'}]
   }
 ];
 

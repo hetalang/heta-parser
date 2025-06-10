@@ -35,7 +35,7 @@ BaseStruct = fullLine: (Space/Break/Note/Id/Index/Action/Type/Title/Dict/Assignm
     return res;
   }
 
-Index "Index" = !("block"/"namespace"/"begin"/"end") space: KeyName "::" id: (KeyName/"*")
+Index "Index" = !(("block"/"namespace"/"begin"/"end") Space/Break) space: KeyName "::" id: (KeyName/"*")
   {
     if(id==='*'){
       return { space };
@@ -43,11 +43,11 @@ Index "Index" = !("block"/"namespace"/"begin"/"end") space: KeyName "::" id: (Ke
       return { id, space };
     }
   }
-Id "Id" = !("block"/"namespace"/"begin"/"end") id: (KeyName/"*") !(Space* "::")
+Id "Id" = !(("block"/"namespace"/"begin"/"end") Space/Break) id: (KeyName/"*") !(Space* "::")
   {
-    if(id==='*'){
+    if (id === '*') {
       return {};
-    }else{
+    } else {
       return { id };
     }
   }
